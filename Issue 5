@@ -1,0 +1,47 @@
+#include <stdio.h>
+
+int main()
+{
+    int a = 21;
+    int b = 10;
+    int i=10;
+    int j=15;
+    int c;
+    printf("Arithmetic Operators with a=21,b=10\n");
+    printf("Line 1 - Value of a + b is %d\n", a + b );
+    printf("Line 2 - Value of a - b is %d\n", a - b );
+    printf("Line 3 - Value of a * b is %d\n", a * b );
+    printf("Line 4 - Value of a / b is %d\n", a / b );
+    printf("Line 5 - Value of a % b is %d\n", a % b );
+    a++;
+    printf("Line 6 - Value of a++ is %d\n", a );
+    a--;
+    printf("Line 7 - Value of a-- is %d\n", a );
+    printf("##########################################\n");
+    printf("Relational Operators with a=21,b=10,i=10,j=15\n");
+    printf("Line 1 - Value of ( i == j-5 ) is %d\n", ( i == j-5 )  );
+    printf("Line 2 - Value of ( i == a) is %d\n", ( i == a )  );
+    printf("Line 3 - Value of ( i > b) is %d\n", ( i > b )  );
+    printf("Line 4 - Value of ( i >= b) is %d\n", ( i >= b )  );
+    printf("Line 5 - Value of ( i < b) is %d\n", ( i < b )  );
+    printf("Line 6 - Value of ( i <= a) is %d\n", ( i <= a )  );
+    printf("##########################################\n");
+    printf("Logical Operators with a=21,b=10,i=10,j=15\n");
+    printf("Line 1 - Value of ( i == j-5 ) && ( i >= b ) is %d\n", ( i == j-5 )&&( i >= b )  );
+    printf("Line 2 - Value of ( i == j-5 ) && ( i > b ) is %d\n", ( i == j-5 ) && ( i > b )  );
+    printf("Line 3 - Value of ( i == j-5 ) || ( i > b ) is %d\n", ( i == j-5 ) || ( i > b )  );
+    printf("##########################################\n");
+    printf("Assignment Operators with a=21,b=10,i=10,j=15\n");
+    c =  a;
+    printf("Line 1 - Value of c =  a is %d\n", c  );
+    c +=  a;
+    printf("Line 2 - Value of c +=  a is %d\n", c  );
+    c -=  a;
+    printf("Line 3 - Value of c -=  a is %d\n", c  );
+     c *=  a;
+    printf("Line 4 - Value of  c *=  a is %d\n", c  );
+    c /=  a;
+    printf("Line 5 - Value of  c /=  a is %d\n", c  );
+    c %=  5;
+    printf("Line 6 - Value of  c %=  5 is %d\n", c  );
+}
