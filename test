@@ -1,0 +1,97 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <stdbool.h>
+
+char temp[10];
+struct Band {
+	char cBand_name [10];
+	int nMember_suu;
+	char cVocal [10];
+	char cVocal_Guitar [10];
+	char cGuitar [10];
+	char cBass [10];
+	char cDrums [10];
+};
+
+int  Set_3_Member(struct Band* pBand_info_mem3){
+
+	printf("Please Enter the name of the Vocal Guitar player?\n");
+	scanf("%s",temp);
+	memset(&pBand_info_mem3->cVocal_Guitar,0,sizeof(&pBand_info_mem3->cVocal_Guitar));
+	memcpy(&pBand_info_mem3->cVocal_Guitar,temp,sizeof(&pBand_info_mem3->cVocal_Guitar));
+	printf("Please Enter the name of the Bass player?\n");
+	scanf("%s",temp);
+	memset(&pBand_info_mem3->cBass,0,sizeof(&pBand_info_mem3->cBass));
+	memcpy(&pBand_info_mem3->cBass,temp,sizeof(&pBand_info_mem3->cBass));
+	printf("Please Enter the name of the Drums player?\n");
+	scanf("%s",temp);
+	memset(&pBand_info_mem3->cDrums,0,sizeof(&pBand_info_mem3->cDrums));
+	memcpy(&pBand_info_mem3->cDrums,temp,sizeof(&pBand_info_mem3->cDrums));
+
+	return 0;
+}
+
+int  Set_4_Member(struct Band* pBand_info_mem4){
+
+	printf("Please Enter the name of the  Vocal player?\n");
+	scanf("%s",temp);
+	memset(&pBand_info_mem4->cVocal,0,sizeof(&pBand_info_mem4->cVocal));
+	memcpy(&pBand_info_mem4->cVocal,temp,sizeof(&pBand_info_mem4->cVocal));
+	printf("Please Enter the name of the  Guitar player?\n");
+	scanf("%s",temp);
+	memset(&pBand_info_mem4->cGuitar,0,sizeof(&pBand_info_mem4->cGuitar));
+	memcpy(&pBand_info_mem4->cGuitar,temp,sizeof(&pBand_info_mem4->cGuitar));
+	printf("Please Enter the name of the Bass player?\n");
+	scanf("%s",temp);
+	memset(&pBand_info_mem4->cBass,0,sizeof(&pBand_info_mem4->cBass));
+	memcpy(&pBand_info_mem4->cBass,temp,sizeof(&pBand_info_mem4->cBass));
+	printf("Please Enter the name of the Drums player?\n");
+	scanf("%s",temp);
+	memset(&pBand_info_mem4->cDrums,0,sizeof(&pBand_info_mem4->cDrums));
+	memcpy(&pBand_info_mem4->cDrums,temp,sizeof(&pBand_info_mem4->cDrums));
+	return 0;
+}
+
+
+int main()
+{
+	struct Band *ptr;
+
+	ptr = (struct Band *) malloc(sizeof(struct Band));
+
+
+	printf("Please Enter Band name?\n");
+	scanf("%s",temp );
+	memset(ptr->cBand_name,0,sizeof(ptr->cBand_name));
+	memcpy(ptr->cBand_name,temp,sizeof(ptr->cBand_name));
+	printf("Please Enter member numbers?\n");
+	scanf("%d",&ptr->nMember_suu );
+	if(ptr->nMember_suu == 3){
+		int result = Set_3_Member(ptr);
+		if(result == 0){
+			printf("Band name : '%s'\n",ptr->cBand_name);
+			printf("Band member : '%d'\n",ptr->nMember_suu);
+			printf("Vocal Guitar name : '%s'\n",ptr->cVocal_Guitar);
+			printf("Bass name : '%s'\n",ptr->cBass);
+			printf("Drums name : '%s'\n",ptr->cDrums);
+		}
+	}else if(ptr->nMember_suu == 4){
+		int result =	Set_4_Member(ptr);
+		if(result == 0){
+			printf("Band name : '%s'\n",ptr->cBand_name);
+			printf("Band member : '%d'\n",ptr->nMember_suu);
+			printf("Vocal name : '%s'\n",ptr->cVocal);
+			printf("Guitar name : '%s'\n",ptr->cGuitar);
+			printf("Bass name : '%s'\n",ptr->cBass);
+			printf("Drums name : '%s'\n",ptr->cDrums);
+		}
+	}else{
+
+		return 0;
+	}
+
+
+
+
+}
