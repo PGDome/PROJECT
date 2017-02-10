@@ -1,0 +1,44 @@
+	/*
+	 * kadai10.c
+	 *
+	 *  Created on: 2017/02/08
+	 *      Author: s79123
+	 */
+	#include <stdio.h>
+	#include <string.h>
+	struct Band{
+		char cBand_name[10];
+		int nMember_suu;
+		char cVocal[10];
+		char cVocal_Guiter[10];
+		char cGuiter[10];
+		char cBass[10];
+		char cDrums[10];
+	};
+	void printBook( struct Band *book );
+	int main(){
+		struct Band recordOfBand;
+		memset(&recordOfBand, 0, sizeof(recordOfBand));
+		int num_mem;
+		char name_Band[10],member_name[10];
+		printf("Please Enter number of Band:");
+		scanf("%d",&num_mem);
+		recordOfBand.nMember_suu=num_mem;
+		if(num_mem==3){
+			printf("Please Enter name of Band:");
+			scanf("%s",&name_Band);
+			memcpy(recordOfBand->cBand_name, name_Band, sizeof(name_Band)-1);
+			Set_3_Member(&recordOfBand);
+		}
+		//memcpy(recordOfBand->nMember_suu, num_mem, 1);
+
+
+	}
+	int  Set_3_Member(struct Band *pBand_info_mem3){
+		printf( "Book title : %d\n", pBand_info_mem3->cBand_name);
+	}
+	void printBook( struct Band *book ) {
+
+	   printf( "Book title : %s\n", book->cBand_name);
+
+	}
