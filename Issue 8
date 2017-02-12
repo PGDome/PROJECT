@@ -1,0 +1,35 @@
+#include <stdio.h>
+int globalNum=1;
+void showLocal();
+void showGlobal();
+void showStatic();
+int main()
+{
+    printf("####Test local global static variable####\n");
+    int i;
+    for(i=0;i<5;i++){
+        showLocal();
+    }
+    printf("##########################################\n");
+     for(i=0;i<5;i++){
+        showGlobal();
+    }
+    printf("##########################################\n");
+     for(i=0;i<5;i++){
+        showStatic();
+    }
+    printf("##########################################\n");
+
+    return 0;
+}
+void showLocal(){
+    int localNum=1;
+    printf("localNum is %d\n",localNum++);
+}
+void showGlobal(){
+    printf("globalNum is %d\n",globalNum++);
+}
+void showStatic(){
+    static int staticNum=1;
+    printf("StaticNum is %d\n",staticNum++);
+}
