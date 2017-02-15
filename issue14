@@ -21,17 +21,41 @@ void Hax2bin(int *hexa_number){
         printf("\n");    
     }
 }
+void Hax2bin1(int *hexa_number,int *hexa_number1,int c){
+    unsigned num_bits = sizeof(int)*2;
+    unsigned bitmask = 1 << (num_bits - 1);
+    unsigned k = 0;
+    int i;
+    for(i=0;i<8;i++){
+         for(k = 0; k != num_bits; k ++)
+    {
+        if((hexa_number[i] & (bitmask >> k))|(hexa_number1[i] & (bitmask >> k)))
+        {
+            printf("*");
+           
+        }
+        else
+        {
+            printf(" ");
+           
+        }
+    }
+        printf("\n");    
+    }
+}
 int main()
 {
     char *buff[]={"0x00","0x3C","0x66","0xE0","0xE0","0x66","0x3C","0x00"};
+    char *buff1[]={"0x00","0x3C","0x66","0xE0","0xEE","0x66","0x3C","0x00"};
     int  hexa_number[10];
+    int  hexa_number1[10];
     int i;
     for(i=0;i<8;i++){
          sscanf(buff[i],"%x",&hexa_number[i]);
+         sscanf(buff1[i],"%x",&hexa_number1[i]);
          //printf("%d\n",hexa_number[i]);
     }
-    Hax2bin(hexa_number);
+    Hax2bin1(hexa_number,hexa_number1,1);
  //   sscanf(buff, "%x", &num);
     return 0;
 }
-
