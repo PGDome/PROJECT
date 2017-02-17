@@ -1,0 +1,29 @@
+#include <stdio.h>
+#include <string.h>
+#include <stdbool.h>
+int main()
+{
+    char str[30];
+    char data[30] = "hello";
+    bool chk = false;
+    int i;
+    while(chk == false)
+    {
+        printf("Enter word: \n");
+        scanf("%s", str);
+        i= strcmp(data,str);
+
+        if(i== 0)
+        {
+            chk = true;
+            break;
+        }
+        if(i != 0)
+        {
+        	printf("%s is NG\n", str);
+        }
+
+    }
+    printf("%s(original) and %s(input) are matched \n", data,str);
+    return(0);
+}
