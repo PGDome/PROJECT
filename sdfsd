@@ -1,0 +1,40 @@
+#include <stdio.h>
+int countOfProcessing(FILE *fp);
+int main()
+{
+    char nfile[5];
+    printf("Enter file name: ");
+	scanf("%s", nfile);
+    FILE *fp = fopen(nfile, "r");
+    if (fp == NULL)
+	{
+		printf("Could not open file %s\n", nfile);
+		return 0;
+	}else{
+	    int count=countOfProcessing(fp);
+	    printf("%d\n",count);
+	}
+
+    return 0;
+}
+int countOfProcessing(FILE *fp){
+    char * state[5];
+    state[0]='\0';
+    int count=0;
+    int index=0;
+    int ch;
+   while(!feof(fp)){
+        ch = fgetc(fp);
+        if(ch == ';'){
+            if(state[index] !="*/"){
+                count++;
+            }
+
+        }
+    }
+  /* close the file */
+  fclose(fp);
+
+    return count;
+}
+
