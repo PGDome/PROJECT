@@ -20,12 +20,10 @@ int main()
 int countOfProcessing(FILE *fp){
     int stateOfBracket=0;
     int count=0;
-    int index=0;
     int ch;
     enum states { Process, 
                 SAW_SLASH, 
                 SAW_STAR, 
-                SAW_BRACKET, 
                 SINGLE_COMMENT, 
                 MULTI_COMMENT } state = Process;
 
@@ -37,8 +35,8 @@ int countOfProcessing(FILE *fp){
                 switch( ch )
                  {
                      case '/'  : state = SAW_SLASH; break;
-                     case ';' : if(stateOfBracket==1){stateOfBracket=0;}else{count++;} // fall-through
-                     case '{' : stateOfBracket=1;
+                     case ';' : count++; // fall-through
+                    // case '{' : stateOfBracket=1;
                      case '}' : count++;
                      default   : break;
                  }
@@ -70,13 +68,6 @@ int countOfProcessing(FILE *fp){
                 switch( ch )
                 {
                     case '*'  : state = SAW_STAR; break;
-                    default   : break;
-                }
-                break;
-            case SAW_BRACKET :
-                switch( ch )
-                {
-                    case '}'  : state = SAW_STAR; break;
                     default   : break;
                 }
                 break;
