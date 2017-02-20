@@ -35,9 +35,11 @@ int countOfProcessing(FILE *fp){
                 switch( ch )
                  {
                      case '/'  : state = SAW_SLASH; break;
-                     case ';' : count++; // fall-through
-                    // case '{' : stateOfBracket=1;
-                     case '}' : count++;
+                     case '\'' : state=SAW_SLASH; break;
+                     case '"'  : state=SAW_SLASH; break;
+                     case ';' : count++; break; // fall-through
+                    // case '{' : stateOfBracket=1;break;
+                   //  case '}' : if(stateOfBracket==1){count++;stateOfBracket=0;}break;
                      default   : break;
                  }
                   break;
@@ -60,7 +62,7 @@ int countOfProcessing(FILE *fp){
             case SINGLE_COMMENT :
                 switch( ch )
                 {
-                    case '\n' : state = Process;  // fall through
+                    case '\n' : state = Process;break;  // fall through
                     default   : break;
                 }
                 break;
