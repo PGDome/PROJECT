@@ -18,23 +18,74 @@ int main()
     return 0;
 }
 int countOfProcessing(FILE *fp){
-    char * state[5];
-    state[0]='\0';
+    int stateOfBracket=0;
     int count=0;
     int index=0;
     int ch;
+    enum states { Process, 
+                SAW_SLASH, 
+                SAW_STAR, 
+                SAW_BRACKET, 
+                SINGLE_COMMENT, 
+                MULTI_COMMENT } state = Process;
+
    while(!feof(fp)){
         ch = fgetc(fp);
-        if(ch == ';'){
-            if(state[index] !="*/"){
-                count++;
-            }
-
-        }
-    }
+         switch( state )
+         {
+             case Process :
+                switch( ch )
+                 {
+                     case '/'  : state = SAW_SLASH; break;
+                     case ';' : if(stateOfBracket==1){stateOfBracket=0;}else{count++;} // fall-through
+                     case '{' : stateOfBracket=1;
+                     case '}' : count++;
+                     default   : break;
+                 }
+                  break;
+             case SAW_SLASH :
+                 switch( ch )
+                 {
+                     case '/'  : state = SINGLE_COMMENT; break;
+                     case '*'  : state = MULTI_COMMENT; break;
+                     default   : state = Process; break;
+                  }
+                  break;
+            case SAW_STAR :
+                switch( ch )
+                {
+                     case '/'  : state = Process; break;
+                     case '*'  : break;
+                     default   : state = MULTI_COMMENT; break;
+                }
+                break;
+            case SINGLE_COMMENT :
+                switch( ch )
+                {
+                    case '\n' : state = Process;  // fall through
+                    default   : break;
+                }
+                break;
+            case MULTI_COMMENT :
+                switch( ch )
+                {
+                    case '*'  : state = SAW_STAR; break;
+                    default   : break;
+                }
+                break;
+            case SAW_BRACKET :
+                switch( ch )
+                {
+                    case '}'  : state = SAW_STAR; break;
+                    default   : break;
+                }
+                break;
+             default: // NOT REACHABLE
+             break;
+         }
+   }
   /* close the file */
   fclose(fp);
 
     return count;
 }
-
